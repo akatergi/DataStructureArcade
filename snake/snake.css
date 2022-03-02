@@ -1,0 +1,124 @@
+#board{
+    display:flex;
+    height: 85vh;
+    justify-content: center;
+}
+
+.tile{
+    /* border:1px solid darkblue; */
+    width:8.5vh;
+    height:8.5vh;
+}
+
+.snakeBody{
+    background-color: green;
+}
+
+.apple{
+    background-color: red;
+}
+#title{
+    height:10vh;
+    display:flex;
+    justify-content: center;
+}
+#titleText{
+    margin:0;
+    padding:0;
+}
+body{
+    margin:0;
+    padding:0;
+    background-color: rgb(155, 189, 220);
+}
+.tile#tile0-0{
+    border-top-left-radius: 12px;
+}
+.tile#tile0-9{
+    border-bottom-left-radius: 12px;
+}
+.tile#tile9-9{
+    border-bottom-right-radius: 12px;
+}
+.tile#tile9-0{
+    border-top-right-radius: 12px;
+}
+.row:nth-child(2n){
+    background-color: rgb(74, 187, 100);
+}
+.row:nth-child(2n+1){
+    background-color: rgb(44, 150, 69);
+}
+
+.row{
+    height:fit-content
+}
+
+.modal{
+    position:absolute;
+    min-height:100vh;
+    margin:0;
+    padding:0;
+    width: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalBody{
+    text-align:center;
+    background-color: white;
+    font-size:xx-large;
+    width:50%;
+    padding:1.7em;
+    padding-top:1em;
+    border-radius:6px;
+    box-shadow:2px 2px 2px 2px;
+}
+
+#closeModal{
+    /* position:absolute; */
+    border:none;
+    background-color: white;
+    text-align: right;
+    font-size:xx-large;
+    opacity:0.5;
+}
+
+#closeModal:hover, #share:hover, #repeat:hover{
+    opacity: 1;
+    transform: scale(1.2);
+    cursor:pointer;
+    transition: transform 200ms;
+}
+
+#temp{
+    text-align: right;
+}
+
+.hidden{
+    visibility:hidden;
+}
+
+#titleText{
+    font-weight: 700;
+}
+
+#share, #repeat{
+    /* width:30%; */
+    font-size:x-large;
+    padding:0.4em;
+    margin-right:1em;
+    display: inline;
+    border-radius:12px;
+}
+
+#share{
+    border:2px solid darkgreen;
+    background-color: lightgreen;
+}
+#repeat{
+    border:2px solid darkred;
+    background-color: red;
+}

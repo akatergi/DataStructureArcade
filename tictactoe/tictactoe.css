@@ -1,0 +1,45 @@
+body{
+    background-image: url("https://img.freepik.com/free-photo/white-crumpled-paper-background-simple-diy-craft_53876-128183.jpg?size=626&ext=jpg");
+    background-size:cover;
+}
+#title{
+    height:13vh;
+    margin:0;
+    padding:0;
+    text-align: center;
+    font-family: 'Syne Mono', monospace;
+}
+.tile{
+    border:1px solid black;
+    height:14vh;
+    width: 14vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size:10vh;
+    font-weight: 700;
+}
+.row{
+    display: flex;
+}
+.tile:nth-child(1){
+    border-left: none;
+}
+.tile:nth-last-child(1){
+    border-right: none;
+}
+.toprow .tile{
+    border-top: none;
+}
+.bottrow .tile{
+    border-bottom: none;
+}
+#board{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.highlight{
+    background-color: rgba(255, 0, 0, 0.557);
+}
