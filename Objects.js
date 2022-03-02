@@ -163,4 +163,10 @@ class DLL {
     }
 }
 
+class BSTNode{
+    constructor(marvel,hero,mask,earth){
+        this.
+    }
+}
+
 export {DLL}
