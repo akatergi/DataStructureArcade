@@ -163,10 +163,62 @@ class DLL {
     }
 }
 
-class BSTNode{
-    constructor(marvel,hero,mask,earth){
-        this.
+class BSTNode {
+    constructor(s = null) {
+        this.marvel = false
+        this.hero = false
+        this.mask = false
+        this.male = false
+        this.title = null
+        this.left = null
+        this.right = null
+        this.prop = s
+        if (s) this.setNodeAttribute(s)
+    }
+    setNodeAttribute(s) {
+        if (s === "marvel") this.marvel = true
+        if (s === "hero") this.hero = true
+        if (s === "mask") this.mask = true
+        if (s === "male") this.male = true
+    }
+    giveTitle(t) {
+        this.title = t
+    }
+    print() {
+        if (!this.title) {
+            console.log(this.prop)
+        }
+        else {
+            console.log(this.title)
+            return
+        }
+        if (this.right) this.right.print()
+        if (this.left) this.left.print()
+    }
+    copy() {
+        var root = new BSTNode();
+        if (!this.title) {
+            if (this.marvel) root.marvel = true
+            if (this.hero) root.hero = true
+            if (this.mask) root.mask = true
+            if (this.male) root.male = true
+        }
+        root.prop = this.prop
+        if (this.right) root.right = this.right.copy()
+        if (this.left) root.left = this.left.copy()
+        return root
+    }
+    insert(node) {
+        let b = node[this.prop]
+        if(this.prop==="male") {
+            if(b) this.right = node
+            else this.left = node
+        }
+        else {
+            if(b) this.right.insert(node)
+            else this.left.insert(node)
+        }
     }
 }
 
-export {DLL}
+export { DLL, BSTNode }

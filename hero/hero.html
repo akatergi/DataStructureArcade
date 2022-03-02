@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="hero.css">
+  <title>Hero Guesser</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <h1 class="text-center" id="title"> Choose a character from the below</h1>
+      <small class="text-muted text-center">Scroll between any of the options below and pick a superhero and remember them.</small>
+      <div id="character">
+        <div class="card myCard mb-3">
+          <div class="row g-0">
+            <div class="col-md-4 cardimg">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Spider-Man</h5>
+                <p class="card-text">Below are some relevant statistics regarding this hero. It is recommended that you are comfortable with these before carrying on.</p>
+                <ul>
+                  <li><span class="infoTitle">Universe: </span> <span id="universe">Marvel</span></li>
+                  <li><span class="infoTitle">Gender: </span> <span id="gender">Male</span></li>
+                  <li><span class="infoTitle">Masked: </span> <span id="mask">Yes</span></li>
+                  <li><span class="infoTitle">Status: </span> <span id="status"> Hero</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="hero.js" type="module"> </script>
+
+</html>

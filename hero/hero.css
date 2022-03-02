@@ -1,0 +1,25 @@
+#title{
+    font-size: 8vh;
+    margin-top:2vh
+}
+
+#character{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 80vh;
+}
+
+.myCard{
+    width: 80%;
+}
+
+.card-body{
+    height: 70vh;
+    margin: 0;
+}
+
+.cardimg{
+    background-image: url("https://wallpapercave.com/wp/wp4910778.jpg");
+    background-size: cover
+}
