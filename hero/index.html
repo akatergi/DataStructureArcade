@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="app.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+  <title>Hero Guesser</title>
+</head>
+
+<body>
+  <div class="hidden" id="modal">
+    <div class="modalBody">
+      <div id="temp">
+        <form action="./hero.html"><button id="closeModal">X</button></form>
+      </div>
+      <div id="titleText">You're thinking of <span id="char"></span>!</div>
+      <p>Press the "Share" button below to share your score with friends, or press the "Try Again" button!</p>
+      <div>
+        <button id="share">Share <i class="fas fa-share"></i></button>
+        <form action="./hero.html"><button id="repeat">Try Again <i class="fas fa-repeat"></i></button></form>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-6 offset-3">
+        <div class="card text-white bg0 mb-3 mt-3" id="maincard">
+          <div class="card-header">Hero Guesser</div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/1200px-Marvel_Logo.svg.png" class="card-img-top" id="cardImg" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Question #<span id="qnum">1</span></h5>
+            <p class="card-text" id="question">Does your character belong to the Marvel Universe?</p>
+            <div class="flex">
+              <button class="btn btn-success" id="yes" style="width:40%;margin-left:10%;">Yes</button>
+              <button class="btn btn-danger" id="no" style="width:40%;">No</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="app.js" type="module"></script>
+
+</html>

@@ -46,14 +46,39 @@ button.keyButton.wrong{
     background-color: rgb(115, 233, 115);
     border-radius:6px;
 }
-
+#worlde{
+    margin-left:20%;
+    margin-right:20%;
+}
+#backBtn{
+    border:1px solid rgb(145, 143, 143);
+    border-radius:50%;
+    font-size:x-large;
+    width:1.5em;
+    height:1.5em;
+}
+#info{
+    border:1px solid rgb(110, 178, 220);
+    background-color: rgb(160, 208, 238);
+    border-radius:50%;
+    font-size:x-large;
+    width:1.5em;
+    height:1.5em;
+}
+button:hover{
+    cursor: pointer;
+}
 #title{
     display:flex;
-    flex-direction: column;
+    width:100%;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     justify-content: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     height:15vh;
+    border-bottom: 1px solid black;
+    box-sizing: border-box;
     font-size:xx-large;
 }
 

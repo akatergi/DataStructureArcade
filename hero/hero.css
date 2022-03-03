@@ -3,6 +3,10 @@
     margin-top:2vh
 }
 
+body{
+    background-color: rgb(141, 196, 177);
+}
+
 #character{
     display: flex;
     justify-content: center;
@@ -19,7 +23,25 @@
     margin: 0;
 }
 
-.cardimg{
+#hImg{
     background-image: url("https://wallpapercave.com/wp/wp4910778.jpg");
-    background-size: cover
+    background-size: cover;
+    background-position: center;
+}
+
+#next, #prev {
+    position: absolute;
+    margin-top:50vh;
+    border:none;
+    border-radius:10px;
+    padding:0.5em;
+    background-color: wheat;
+}
+
+#prev{
+    margin-left:2vh
+}
+
+#next{
+    margin-left:94vw
 }

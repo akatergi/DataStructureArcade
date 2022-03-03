@@ -11,18 +11,22 @@
 </head>
 
 <body>
+  <div class="buttons">
+    <button id="prev"> &lt Previous </button>
+    <button id="next"> Next &gt </button>
+  </div>
   <div class="container">
     <div class="row">
       <h1 class="text-center" id="title"> Choose a character from the below</h1>
       <small class="text-muted text-center">Scroll between any of the options below and pick a superhero and remember them.</small>
+      <form action="./index.html" class="d-flex justify-content-center"><button class="btn btn-success btn-large" id="ready"> I'm Ready!</button></form>
       <div id="character">
         <div class="card myCard mb-3">
           <div class="row g-0">
-            <div class="col-md-4 cardimg">
-            </div>
+            <div class="col-md-4 cardimg" id="hImg"> </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">Spider-Man</h5>
+                <h5 class="card-title" id="hTitle">Spider-Man</h5>
                 <p class="card-text">Below are some relevant statistics regarding this hero. It is recommended that you are comfortable with these before carrying on.</p>
                 <ul>
                   <li><span class="infoTitle">Universe: </span> <span id="universe">Marvel</span></li>
@@ -35,7 +39,7 @@
           </div>
         </div>
       </div>
-    </div>
+  </div>
   </div>
 </body>
 

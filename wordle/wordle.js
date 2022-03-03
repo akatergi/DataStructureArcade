@@ -60,6 +60,7 @@ function insertLetter(l) {
 }
 
 function endGame() {
+    info.removeAttribute("disabled")
     keyButtons.forEach(btn => {
         btn.removeEventListener("click", handleClick)
     })
@@ -112,7 +113,7 @@ function submitWord() {
             }
             else {
                 board[rowIdx][i].classList.add("wrong")
-                if(!letters[guess[i]].classList.contains("correct") || !letters[guess[i]].classList.contains("wronglocation")) letters[guess[i]].classList.add("wrong")
+                if(!letters[guess[i]].classList.contains("correct") && !letters[guess[i]].classList.contains("wronglocation")) letters[guess[i]].classList.add("wrong")
             }
         }
 
@@ -159,3 +160,6 @@ share.addEventListener("click", () => {
     navigator.clipboard.writeText(`Solved for word: ${answer} in ${c}/6 tries. Try for yourself at ${document.URL}\n` + res)
 
 })
+
+const info = document.getElementById("info")
+info.addEventListener("click", () => modal.classList.remove("hidden"))

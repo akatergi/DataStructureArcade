@@ -113,6 +113,7 @@ function rec() {
         setTimeout(rec, 200)
     }
     else {
+        info.removeAttribute("disabled")
         titleText.innerText = `You scored a total of ${snake.n}!`
         modal.classList.remove("hidden")
     }
@@ -171,9 +172,13 @@ repeat.addEventListener("click", () => {
     makeApples()
 })
 
+const info = document.getElementById("info")
+info.addEventListener("click", () => modal.classList.remove("hidden"))
+
 document.getElementById("share").addEventListener("click", () => {
     navigator.clipboard.writeText(`I just scored ${snake.n} in Snake game!\n Try for yourself at ${document.URL}\n`)
 })
 
 rec()
 makeApples()
+
