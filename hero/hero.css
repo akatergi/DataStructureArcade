@@ -4,7 +4,19 @@
 }
 
 body{
-    background-color: rgb(141, 196, 177);
+    background-color: #8dc4b1;
+}
+
+#back{
+    position:absolute;
+    margin-top:6vh;
+    background-color: #2a6751af;
+    border:1px solid #144031;
+    border-radius: 50%;
+    width:5vh;
+    height:5vh;
+    
+    font-size: x-large;
 }
 
 #character{

@@ -3,10 +3,17 @@ const board = [[], [], [], [], []]
 const arr = [[], [], [], [], []]
 let player1 = true
 let gameOver = false
+var winner
 
 const XO = () => player1 ? 1 : 2
 const icons = { 0: "", 1: '<i class="fas fa-times"></i>', 2: '<i class="far fa-circle"></i>' }
-
+const modal = document.querySelector(".modal")
+const share = document.getElementById("share")
+const closeModal = document.getElementById("closeModal")
+const winnerText = document.getElementById("winner")
+closeModal.addEventListener('click', () => modal.classList.add("hidden"))
+const info = document.getElementById("info")
+info.addEventListener("click", () => modal.classList.remove("hidden"))
 for (let i = 0; i < boardSize; i++) {
     for (let j = 0; j < boardSize; j++) {
         board[i][j] = document.querySelector(`#tile${i}-${j}`)
@@ -38,6 +45,10 @@ function updateBoard(i, j) {
                 board.forEach(e => e.forEach(tile => {
                     tile.removeEventListener("click", handleTileClick)
                 }))
+                winnerText.innerText = winner === 1 ? "X" : "O"
+                modal.classList.remove("hidden")
+                share.addEventListener("click", () => navigator.clipboard.writeText(`I just won as player ${winner === 1 ? "X" : "O"} in TicTacToe!\n Play it yourself at ${document.URL}`))
+                info.removeAttribute("disabled")
             }
         }
     } catch { }
@@ -78,6 +89,7 @@ function horizontals() {
         }
         if (same) {
             highlight(1, i)
+            winner = arr[i][0]
             return true
         }
     }
@@ -95,6 +107,7 @@ function verticals() {
         }
         if (same) {
             highlight(2, j)
+            winner = arr[0][j]
             return true
         }
     }
@@ -108,7 +121,11 @@ function diagonals() {
         if (arr[i][i] != arr[i + 1][i + 1] || !arr[i][i]) { d1 = false; break }
     }
 
-    if (d1) { highlight(3, 0); return true }
+    if (d1) {
+        highlight(3, 0);
+        winner = arr[0][0]
+        return true
+    }
 
     let d2 = true
 
@@ -116,7 +133,11 @@ function diagonals() {
         if (arr[i][boardSize - 1 - i] != arr[i + 1][boardSize - 1 - (i + 1)] || !arr[i][boardSize - 1 - i]) { d2 = false; break }
     }
 
-    if (d2) { highlight(4, 0); return true }
+    if (d2) {
+        highlight(4, 0)
+        winner = arr[0][boardSize - 1]
+        return true
+    }
 }
 
 function checkGameOver() {

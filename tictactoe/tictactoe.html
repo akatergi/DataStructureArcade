@@ -10,7 +10,24 @@
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    <h1 id="title">Tic Tac Toe</h1>
+    <div class="modal hidden">
+        <div class="modalBody">
+          <div id="temp">
+            <button letter="ESCAPE" id="closeModal">X</button>
+          </div>
+          <div id="titleText">Player <span id="winner"></span> wins!</div>
+          <p>Press the "Share" button below to share your score with friends, or press the "Try Again" button!</p>
+          <div>
+            <button id="share">Share <i class="fas fa-share"></i></button>
+            <form><button id="repeat">Try Again <i class="fas fa-repeat"></i></button></form>
+          </div>
+        </div>
+      </div>
+      <div id="title">
+        <form action="../index.html"><button id="backBtn">&lt</button></form>
+        <span id="worlde">Tic Tac Toe</span>
+        <button id="info" disabled><i class="fas fa-info"></i></button>
+      </div>
     <div id="board">
         <div class="row toprow">
             <div class="tile" id="tile0-0"></div>

@@ -133,8 +133,6 @@ button:hover{
     justify-content: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     height:10vh;
-    border-bottom: 1px solid black;
-    box-sizing: border-box;
     font-size:xx-large;
 }
 
