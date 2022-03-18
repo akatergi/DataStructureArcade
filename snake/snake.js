@@ -1,13 +1,29 @@
 import {DLL} from "../Objects.js"
 
-let boardSize = 10
+let boardSize = 20
 let gameOver = false
-let tiles = [[], [], [], [], [], [], [], [], [], []]
+let tiles = []
+let board = document.getElementById("board"); 
+
 for (let i = 0; i < boardSize; i++) {
+
+    tiles[i] = []
+    let thisRow = document.createElement("div");
+    thisRow.classList.add("row");
+    if(i%2==0) thisRow.classList.add("row2");
+    board.appendChild(thisRow)
+
     for (let j = 0; j < boardSize; j++) {
-        tiles[i][j] = document.querySelector(`#tile${i}-${j}`)
+        let thisCol = document.createElement("div")
+        thisCol.classList.add("tile")
+        thisCol.id=`tile${i}-${j}`
+        thisRow.append(thisCol)
+        tiles[i][j] = thisCol
     }
 }
+
+document.querySelectorAll(".tile").forEach(el => el.style.height = `${90/boardSize}vh`)
+
 let dirState = true
 let appleState = true
 const modal = document.querySelector(".modal")
@@ -85,7 +101,7 @@ function display() {
             if (tiles[i][j].classList.contains("apple") && snake.head.x === i && snake.head.y === j) {
                 snake.eatApple()
                 appleState = true
-                setTimeout(makeApples, Math.floor(Math.random() * 6000) + 4000)
+                makeApples()
                 tiles[i][j].classList.remove("apple")
             }
         }
@@ -110,7 +126,7 @@ function rec() {
         dirState = true
         display()
         snake.move()
-        setTimeout(rec, 200)
+        setTimeout(rec, 70)
     }
     else {
         info.removeAttribute("disabled")
@@ -129,7 +145,7 @@ function makeApples() {
         }
         tiles[randX][randY].classList.add("apple")
         appleState = false
-        setTimeout(makeApples, Math.floor(Math.random() * 6000) + 4000)
+        makeApples()
     }
 }
 

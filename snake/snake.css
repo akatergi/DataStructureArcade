@@ -6,8 +6,8 @@
 
 .tile{
     /* border:1px solid darkblue; */
-    width:8.5vh;
-    height:8.5vh;
+    width:5vh;
+    height:5vh;
 }
 
 .snakeBody{
@@ -30,18 +30,6 @@ body{
     margin:0;
     padding:0;
     background-color: rgb(155, 189, 220);
-}
-.tile#tile0-0{
-    border-top-left-radius: 12px;
-}
-.tile#tile0-9{
-    border-bottom-left-radius: 12px;
-}
-.tile#tile9-9{
-    border-bottom-right-radius: 12px;
-}
-.tile#tile9-0{
-    border-top-right-radius: 12px;
 }
 .row:nth-child(2n){
     background-color: rgb(74, 187, 100);
