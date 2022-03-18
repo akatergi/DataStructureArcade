@@ -4,18 +4,17 @@
     justify-content: center;
 }
 
-.tile{
-    /* border:1px solid darkblue; */
-    width:5vh;
-    height:5vh;
+
+.snakeHead{
+    border:1px solid black;
+    box-sizing: border-box;
 }
 
 .snakeBody{
     background-color: green;
 }
-
 .apple{
-    background-color: red;
+    color:red;
 }
 #title{
     height:10vh;

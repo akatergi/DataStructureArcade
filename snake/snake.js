@@ -22,7 +22,11 @@ for (let i = 0; i < boardSize; i++) {
     }
 }
 
-document.querySelectorAll(".tile").forEach(el => el.style.height = `${90/boardSize}vh`)
+document.querySelectorAll(".tile").forEach(el => {
+    el.style.height = `${89/boardSize}vh`
+    el.style.width = `${89/boardSize}vh`
+    el.style.fontSize = `${89/boardSize}vh`
+})
 
 let dirState = true
 let appleState = true
@@ -103,6 +107,7 @@ function display() {
                 appleState = true
                 makeApples()
                 tiles[i][j].classList.remove("apple")
+                tiles[i][j].firstChild.remove();
             }
         }
     }
@@ -117,8 +122,8 @@ function checkGameOver() {
 //2: down
 //3: left
 //4: right
-snake.push(5, 4)
-snake.push(5, 5)
+snake.push(boardSize/2, boardSize/2-1)
+snake.push(boardSize/2, boardSize/2)
 
 function rec() {
     checkGameOver()
@@ -144,6 +149,7 @@ function makeApples() {
             randY = Math.floor(Math.random() * boardSize)
         }
         tiles[randX][randY].classList.add("apple")
+        tiles[randX][randY].innerHTML='<i class="fas fa-apple-alt"></i>'
         appleState = false
         makeApples()
     }
