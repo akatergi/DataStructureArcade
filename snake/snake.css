@@ -73,7 +73,7 @@ body{
     opacity:0.5;
 }
 
-#closeModal:hover, #share:hover, #repeat:hover{
+#closeModal:hover, #share:hover, #repeat:hover, #settings:hover, #save:hover{
     opacity: 1;
     transform: scale(1.2);
     cursor:pointer;
@@ -123,7 +123,7 @@ button:hover{
     font-size:xx-large;
 }
 
-#share, #repeat{
+#share, #repeat, #settings, #save{
     /* width:30%; */
     font-size:x-large;
     padding:0.4em;
@@ -136,7 +136,35 @@ button:hover{
     border:2px solid darkgreen;
     background-color: lightgreen;
 }
+
 #repeat{
     border:2px solid darkred;
     background-color: red;
+}
+
+#settings{
+    border:2px solid rgb(82, 79, 79);
+    background-color: rgb(170, 163, 163);
+}
+
+#save{
+    border:2px solid rgb(31, 15, 104);
+    background-color: rgb(140, 134, 221);
+}
+
+.formpair{
+    display:flex;
+    flex-direction: column;
+}
+
+#inputs{
+    display:flex;
+    justify-content: space-between;
+}
+
+.myInput{
+    size:100%;
+    font-size: 0.8em;
+    width:100%;
+    margin-right:1em;
 }

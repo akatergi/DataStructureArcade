@@ -1,42 +1,16 @@
-import {DLL} from "../Objects.js"
-
+import { DLL } from "../Objects.js"
 let boardSize = 20
 let gameOver = false
 let tiles = []
-let board = document.getElementById("board"); 
-
-for (let i = 0; i < boardSize; i++) {
-
-    tiles[i] = []
-    let thisRow = document.createElement("div");
-    thisRow.classList.add("row");
-    if(i%2==0) thisRow.classList.add("row2");
-    board.appendChild(thisRow)
-
-    for (let j = 0; j < boardSize; j++) {
-        let thisCol = document.createElement("div")
-        thisCol.classList.add("tile")
-        thisCol.id=`tile${i}-${j}`
-        thisRow.append(thisCol)
-        tiles[i][j] = thisCol
-    }
-}
-
-document.querySelectorAll(".tile").forEach(el => {
-    el.style.height = `${89/boardSize}vh`
-    el.style.width = `${89/boardSize}vh`
-    el.style.fontSize = `${89/boardSize}vh`
-})
-
+let board = document.getElementById("board");
 let dirState = true
 let appleState = true
 const modal = document.querySelector(".modal")
 const titleText = document.getElementById("titleText")
 const closeModal = document.getElementById("closeModal")
 const repeat = document.getElementById("repeat")
-
-closeModal.addEventListener("click", () => modal.classList.add("hidden"))
-document.addEventListener("keydown", e => e.key === "Escape" ? closeModal.click() : "")
+const replace = document.querySelector("#replace")
+var snakeSpeed = 70
 
 class Snake extends DLL {
     constructor() {
@@ -113,6 +87,36 @@ function display() {
     }
 }
 
+function makeGame() {
+    tiles = []
+    for (let i = 0; i < boardSize; i++) {
+        tiles[i] = []
+        let thisRow = document.createElement("div");
+        thisRow.classList.add("row");
+        if (i % 2 == 0) thisRow.classList.add("row2");
+        board.appendChild(thisRow)
+
+        for (let j = 0; j < boardSize; j++) {
+            let thisCol = document.createElement("div")
+            thisCol.classList.add("tile")
+            thisCol.id = `tile${i}-${j}`
+            thisRow.append(thisCol)
+            tiles[i][j] = thisCol
+        }
+    }
+    document.querySelectorAll(".tile").forEach(el => {
+        el.style.height = `${89 / boardSize}vh`
+        el.style.width = `${89 / boardSize}vh`
+        el.style.fontSize = `${89 / boardSize}vh`
+    })
+}
+
+makeGame()
+
+closeModal.addEventListener("click", () => modal.classList.add("hidden"))
+document.addEventListener("keydown", e => e.key === "Escape" ? closeModal.click() : "")
+
+
 function checkGameOver() {
     let walls = !(snake.head.x >= 0 && snake.head.x < boardSize && snake.head.y >= 0 && snake.head.y < boardSize)
     gameOver = walls || snake.checkOverlap()
@@ -122,8 +126,8 @@ function checkGameOver() {
 //2: down
 //3: left
 //4: right
-snake.push(boardSize/2, boardSize/2-1)
-snake.push(boardSize/2, boardSize/2)
+snake.push(boardSize / 2, boardSize / 2 - 1)
+snake.push(boardSize / 2, boardSize / 2)
 
 function rec() {
     checkGameOver()
@@ -131,7 +135,7 @@ function rec() {
         dirState = true
         display()
         snake.move()
-        setTimeout(rec, 70)
+        setTimeout(rec, snakeSpeed)
     }
     else {
         info.removeAttribute("disabled")
@@ -149,7 +153,7 @@ function makeApples() {
             randY = Math.floor(Math.random() * boardSize)
         }
         tiles[randX][randY].classList.add("apple")
-        tiles[randX][randY].innerHTML='<i class="fas fa-apple-alt"></i>'
+        tiles[randX][randY].innerHTML = '<i class="fas fa-apple-alt"></i>'
         appleState = false
         makeApples()
     }
@@ -181,15 +185,18 @@ document.addEventListener("keydown", e => {
 })
 
 repeat.addEventListener("click", () => {
+    board.innerHTML = ""
     gameOver = false
+    appleState = true
+    makeGame()
     closeModal.click()
-    snake.head=null
-    snake.tail=null
-    snake.direction=1
-    snake.n=0
+    snake.head = null
+    snake.tail = null
+    snake.direction = 1
+    snake.n = 0
 
-    snake.push(5, 5)
-    snake.push(5, 6)
+    snake.push(boardSize / 2, boardSize / 2 - 1)
+    snake.push(boardSize / 2, boardSize / 2)
     rec()
     makeApples()
 })
@@ -204,3 +211,73 @@ document.getElementById("share").addEventListener("click", () => {
 rec()
 makeApples()
 
+let modalHTML = `
+<p>Press the "Share" button below to share your score with friends, or press the "Try Again" button!</p>
+<div>
+  <button id="share">Share <i class="fas fa-share"></i></button>
+  <button id="repeat">Try Again <i class="fas fa-repeat"></i></button>
+  <button id="settings">Settings <i class="fas fa-cog"></i></button>
+</div>
+`
+let settingsHTML = `
+<div id="inputs">
+<div class="formpair">
+  <label class="myLabel" for="boardSize">Board Size:</label>
+  <input type="number" class="myInput" min="5" max="50" name="boardSize" id="boardSize">
+</div>
+<div class="formpair">
+  <label class="myLabel" for="snakeSpeed">Snake Speed:</label>
+  <input type="number" class="myInput" min="50" max="1000" name="snakeSpeed" id="snakeSpeed">
+</div>
+</div>
+<button id="save">Save Changes</button>
+`
+
+var Settings = document.getElementById("settings")
+
+function handleSettings() {
+    replace.innerHTML = settingsHTML
+    let save = document.getElementById("save")
+    document.getElementById("boardSize").value = boardSize
+    document.getElementById("snakeSpeed").value = snakeSpeed
+
+    save.addEventListener("click", () => {
+
+        boardSize = document.getElementById("boardSize").value
+        snakeSpeed = document.getElementById("snakeSpeed").value
+
+        if (boardSize > 100) {
+            alert("Cannot exceed 100 for board size");
+        } else {
+
+            repeat.click()
+            replace.innerHTML = modalHTML
+
+            document.getElementById("repeat").addEventListener("click", () => {
+                board.innerHTML = ""
+                gameOver = false
+                appleState = true
+                makeGame()
+                closeModal.click()
+                snake.head = null
+                snake.tail = null
+                snake.direction = 1
+                snake.n = 0
+
+                snake.push(boardSize / 2, boardSize / 2 - 1)
+                snake.push(boardSize / 2, boardSize / 2)
+
+                rec()
+                makeApples()
+            })
+
+            document.getElementById("share").addEventListener("click", () => {
+                navigator.clipboard.writeText(`I just scored ${snake.n} in Snake game!\n Try for yourself at ${document.URL}\n`)
+            })
+
+            document.getElementById("settings").addEventListener("click", handleSettings)
+        }
+    })
+}
+
+Settings.addEventListener("click", handleSettings)
