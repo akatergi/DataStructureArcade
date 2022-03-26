@@ -65,7 +65,6 @@ let snake = new Snake();
 function display() {
     for (let i = 0; i < boardSize; i++) {
         for (let j = 0; j < boardSize; j++) {
-
             if (snake.has(i, j)) {
                 tiles[i][j].classList.remove("empty")
                 tiles[i][j].classList.add("snakeBody")
@@ -126,8 +125,8 @@ function checkGameOver() {
 //2: down
 //3: left
 //4: right
-snake.push(boardSize / 2, boardSize / 2 - 1)
-snake.push(boardSize / 2, boardSize / 2)
+snake.push(Math.floor(boardSize / 2), Math.floor(boardSize / 2) - 1)
+snake.push(Math.floor(boardSize / 2), Math.floor(boardSize / 2))
 
 function rec() {
     checkGameOver()
@@ -195,8 +194,8 @@ repeat.addEventListener("click", () => {
     snake.direction = 1
     snake.n = 0
 
-    snake.push(boardSize / 2, boardSize / 2 - 1)
-    snake.push(boardSize / 2, boardSize / 2)
+    snake.push(Math.floor(boardSize / 2), Math.floor(boardSize / 2) - 1)
+    snake.push(Math.floor(boardSize / 2), Math.floor(boardSize / 2))
     rec()
     makeApples()
 })
@@ -226,8 +225,8 @@ let settingsHTML = `
   <input type="number" class="myInput" min="5" max="50" name="boardSize" id="boardSize">
 </div>
 <div class="formpair">
-  <label class="myLabel" for="snakeSpeed">Snake Speed:</label>
-  <input type="number" class="myInput" min="50" max="1000" name="snakeSpeed" id="snakeSpeed">
+  <label class="myLabel" for="snakeSpeed">Snake Speed (1-500):</label>
+  <input type="number" class="myInput" min="50" max="500" name="snakeSpeed" id="snakeSpeed">
 </div>
 </div>
 <button id="save">Save Changes</button>
@@ -239,12 +238,16 @@ function handleSettings() {
     replace.innerHTML = settingsHTML
     let save = document.getElementById("save")
     document.getElementById("boardSize").value = boardSize
-    document.getElementById("snakeSpeed").value = snakeSpeed
+    document.getElementById("snakeSpeed").value = 500-snakeSpeed
 
     save.addEventListener("click", () => {
 
-        boardSize = document.getElementById("boardSize").value
-        snakeSpeed = document.getElementById("snakeSpeed").value
+        boardSize = parseInt(document.getElementById("boardSize").value)
+        snakeSpeed = parseInt(document.getElementById("snakeSpeed").value)
+
+        if (boardSize < 0) boardSize = -boardSize
+        snakeSpeed = 500 - snakeSpeed
+        if (snakeSpeed < 0) snakeSpeed = 0
 
         if (boardSize > 100) {
             alert("Cannot exceed 100 for board size");
@@ -264,8 +267,8 @@ function handleSettings() {
                 snake.direction = 1
                 snake.n = 0
 
-                snake.push(boardSize / 2, boardSize / 2 - 1)
-                snake.push(boardSize / 2, boardSize / 2)
+                snake.push(Math.floor(boardSize / 2), Math.floor(boardSize / 2) - 1)
+                snake.push(Math.floor(boardSize / 2), Math.floor(boardSize / 2))
 
                 rec()
                 makeApples()
