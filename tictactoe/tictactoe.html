@@ -1,70 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="tictactoe.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Supermercado+One&family=Syne+Mono&display=swap" rel="stylesheet">
-    <title>Tic Tac Toe</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="tictactoe.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Supermercado+One&family=Syne+Mono&display=swap" rel="stylesheet">
+  <title>Tic Tac Toe</title>
 </head>
+
 <body>
-    <div class="modal hidden">
-        <div class="modalBody">
-          <div id="temp">
-            <button letter="ESCAPE" id="closeModal">X</button>
-          </div>
-          <div id="titleText">Player <span id="winner"></span> wins!</div>
-          <p>Press the "Share" button below to share your score with friends, or press the "Try Again" button!</p>
-          <div>
-            <button id="share">Share <i class="fas fa-share"></i></button>
-            <form><button id="repeat">Try Again <i class="fas fa-repeat"></i></button></form>
-          </div>
+  <div class="modal hidden">
+    <div class="modalBody">
+      <div id="temp">
+        <button letter="ESCAPE" id="closeModal">X</button>
+      </div>
+      <div id="titleText">Player <span id="winner"></span> wins!</div>
+      <p>Press the "Share" button below to share your score with friends, or press the "Try Again" button!</p>
+      <div id="buttons">
+        <button id="share">Share <i class="fas fa-share"></i></button>
+        <button id="repeat">Try Again <i class="fas fa-repeat"></i></button>
+        <div class="sizeInp">
+          <label id="sizeLabel" for="size">Size</label>
+          <input type="number" name="size" id="inpSize">
         </div>
       </div>
-      <div id="title">
-        <form action="../index.html"><button id="backBtn">&lt</button></form>
-        <span id="worlde">Tic Tac Toe</span>
-        <button id="info" disabled><i class="fas fa-cog"></i></button>
-      </div>
-    <div id="board">
-        <div class="row toprow">
-            <div class="tile" id="tile0-0"></div>
-            <div class="tile" id="tile0-1"></div>
-            <div class="tile" id="tile0-2"></div>
-            <div class="tile" id="tile0-3"></div>
-            <div class="tile" id="tile0-4"></div>
-        </div>
-        <div class="row">
-            <div class="tile" id="tile1-0"></div>
-            <div class="tile" id="tile1-1"></div>
-            <div class="tile" id="tile1-2"></div>
-            <div class="tile" id="tile1-3"></div>
-            <div class="tile" id="tile1-4"></div>
-        </div>
-        <div class="row">
-            <div class="tile" id="tile2-0"></div>
-            <div class="tile" id="tile2-1"></div>
-            <div class="tile" id="tile2-2"></div>
-            <div class="tile" id="tile2-3"></div>
-            <div class="tile" id="tile2-4"></div>
-        </div>
-        <div class="row">
-            <div class="tile" id="tile3-0"></div>
-            <div class="tile" id="tile3-1"></div>
-            <div class="tile" id="tile3-2"></div>
-            <div class="tile" id="tile3-3"></div>
-            <div class="tile" id="tile3-4"></div>
-        </div>
-        <div class="row bottrow">
-            <div class="tile" id="tile4-0"></div>
-            <div class="tile" id="tile4-1"></div>
-            <div class="tile" id="tile4-2"></div>
-            <div class="tile" id="tile4-3"></div>
-            <div class="tile" id="tile4-4"></div>
-        </div>
     </div>
+  </div>
+  <div id="title">
+    <form action="../index.html"><button id="backBtn">&lt</button></form>
+    <span id="worlde">Tic Tac Toe</span>
+    <button id="info" disabled><i class="fas fa-cog"></i></button>
+  </div>
+  <div id="board">
+
+  </div>
 </body>
 <script src="tictactoe.js"></script>
+
 </html>

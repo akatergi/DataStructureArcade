@@ -1,9 +1,12 @@
-const boardSize = 5
-const board = [[], [], [], [], []]
-const arr = [[], [], [], [], []]
+var boardSize = 5
+const board = []
+const arr = []
 let player1 = true
 let gameOver = false
 var winner
+var dispBoard = document.getElementById("board")
+var repeat = document.getElementById("repeat")
+var inpSize = document.getElementById("inpSize")
 
 const XO = () => player1 ? 1 : 2
 const icons = { 0: "", 1: '<i class="fas fa-times"></i>', 2: '<i class="far fa-circle"></i>' }
@@ -14,17 +17,42 @@ const winnerText = document.getElementById("winner")
 closeModal.addEventListener('click', () => modal.classList.add("hidden"))
 const info = document.getElementById("info")
 info.addEventListener("click", () => modal.classList.remove("hidden"))
-for (let i = 0; i < boardSize; i++) {
-    for (let j = 0; j < boardSize; j++) {
-        board[i][j] = document.querySelector(`#tile${i}-${j}`)
-        arr[i][j] = 0
-    }
-}
 
-for (let i = 0; i < boardSize; i++) {
-    for (let j = 0; j < boardSize; j++) {
-        board[i][j].addEventListener("click", handleTileClick)
+function makeGame() {
+    for (let i = 0; i < boardSize; i++) {
+
+        var thisRow = document.createElement("div")
+        thisRow.classList.add("row")
+        if (i === 0) thisRow.classList.add("topRow")
+        else if (i === boardSize - 1) thisRow.classList.add("bottRow")
+        board[i] = []
+        arr[i] = []
+
+        for (let j = 0; j < boardSize; j++) {
+            var thisCol = document.createElement("div")
+            thisCol.classList.add("tile")
+            thisCol.id = `tile${i}-${j}`
+            thisRow.appendChild(thisCol)
+            board[i][j] = thisCol
+            arr[i][j] = 0
+        }
+        dispBoard.append(thisRow)
     }
+
+
+    for (let i = 0; i < boardSize; i++) {
+        for (let j = 0; j < boardSize; j++) {
+            board[i][j].addEventListener("click", handleTileClick)
+        }
+    }
+
+    board.forEach(e => {
+        e.forEach(el => {
+            el.style.height = `${70 / boardSize}vh`
+            el.style.width = `${70 / boardSize}vh`
+            el.style.fontSize = `${60 / boardSize}vh`
+        })
+    })
 }
 
 function handleTileClick(e) {
@@ -144,3 +172,12 @@ function checkGameOver() {
     if (horizontals() || verticals() || diagonals()) return true
     return false
 }
+
+makeGame()
+
+repeat.addEventListener("click", () => {
+    boardSize = parseInt(inpSize.value)
+    dispBoard.innerHTML = ""
+    makeGame()
+    closeModal.click()
+})
