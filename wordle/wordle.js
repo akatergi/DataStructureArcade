@@ -100,7 +100,7 @@ function submitWord() {
         for (let i = 0; i < 5; i++) {
             if (guess[i] === answer[i]) {
                 greens.add(guess[i])
-                myDict[guess[i]]++
+                // myDict[guess[i]]++
                 board[rowIdx][i].classList.add("correct")
                 if(letters[guess[i]].classList.contains("wrong")) letters[guess[i]].classList.remove("wrong");
                 if(letters[guess[i]].classList.remove("wronglocation")) letters[guess[i]].classList.remove("wronglocation");
